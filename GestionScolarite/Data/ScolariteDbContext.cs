@@ -15,5 +15,9 @@ namespace GestionScolarite
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Etudiant> Etudiants { get; set; }
         public DbSet<Directeur> Directeurs { get; set; }
+
+        public DbSet<Matiere> Matieres { get; set; }
+        public DbSet<Enseignant> Enseignants { get; set; }
+
     }
 }

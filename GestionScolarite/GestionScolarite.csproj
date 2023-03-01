@@ -131,6 +131,7 @@
     <Compile Include="Controllers\AdministratifController.cs" />
     <Compile Include="Controllers\DirecteurController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MatieresController.cs" />
     <Compile Include="Data\ScolariteDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -163,10 +164,27 @@
     <Compile Include="Migrations\202302270409318_InitialCreate6.designer.cs">
       <DependentUpon>202302270409318_InitialCreate6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303011802474_InitialCreate7.cs" />
+    <Compile Include="Migrations\202303011802474_InitialCreate7.designer.cs">
+      <DependentUpon>202303011802474_InitialCreate7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303011811526_InitialCreate8.cs" />
+    <Compile Include="Migrations\202303011811526_InitialCreate8.designer.cs">
+      <DependentUpon>202303011811526_InitialCreate8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303011818102_InitialCreate9.cs" />
+    <Compile Include="Migrations\202303011818102_InitialCreate9.designer.cs">
+      <DependentUpon>202303011818102_InitialCreate9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303011848163_InitialCreate10.cs" />
+    <Compile Include="Migrations\202303011848163_InitialCreate10.designer.cs">
+      <DependentUpon>202303011848163_InitialCreate10.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Administratif.cs" />
     <Compile Include="Models\Directeur.cs" />
+    <Compile Include="Models\Enseignant.cs" />
     <Compile Include="Models\Etudiant.cs" />
     <Compile Include="Models\Matiere.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2038,6 +2056,14 @@
     <Content Include="Views\Administratif\Index.cshtml" />
     <Content Include="Views\Directeur\Index.cshtml" />
     <Content Include="Views\Directeur\Edit.cshtml" />
+    <Content Include="Views\Directeur\Delete.cshtml" />
+    <Content Include="Views\Matieres\Create.cshtml" />
+    <Content Include="Views\Matieres\Delete.cshtml" />
+    <Content Include="Views\Matieres\Details.cshtml" />
+    <Content Include="Views\Matieres\Edit.cshtml" />
+    <Content Include="Views\Matieres\Index.cshtml" />
+    <Content Include="Views\Directeur\CreateEnseignant.cshtml" />
+    <Content Include="Views\Directeur\IndexEnseignant.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2073,6 +2099,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202302270409318_InitialCreate6.resx">
       <DependentUpon>202302270409318_InitialCreate6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303011802474_InitialCreate7.resx">
+      <DependentUpon>202303011802474_InitialCreate7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303011811526_InitialCreate8.resx">
+      <DependentUpon>202303011811526_InitialCreate8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303011818102_InitialCreate9.resx">
+      <DependentUpon>202303011818102_InitialCreate9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303011848163_InitialCreate10.resx">
+      <DependentUpon>202303011848163_InitialCreate10.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

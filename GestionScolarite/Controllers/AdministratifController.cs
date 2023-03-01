@@ -112,6 +112,8 @@ namespace GestionScolarite.Controllers
         {
             Account account = db.Accounts.Find(id);
             db.Accounts.Remove(account);
+            Etudiant e = db.Etudiants.FirstOrDefault(c => c.Account == account.Id);
+            db.Etudiants.Remove(e);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

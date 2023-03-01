@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using GestionScolarite.Models;
@@ -24,28 +25,37 @@ namespace GestionScolarite.Controllers
             return View();
         }
 
-        // GET: Directeur/Create
-        public ActionResult Create()
+         // GET: Directeur/Create Enseignant
+        public ActionResult CreateEnseignant()
         {
-            return View();
+            ViewBag.mat = db.Matieres.Where(c => c.Assignation != "Assigned").Distinct().ToList();
+             return View();
         }
 
         // POST: Directeur/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
+       public ActionResult CreateEnseignant(Enseignant enseignant)
+        {           
+            
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                db.Enseignants.Add(enseignant);
+                db.SaveChanges();
+                Matiere m = db.Matieres.Find(enseignant.matid);
+                m.Assignation = "Assigned";
+                db.Entry(m).State = EntityState.Modified;
+                db.SaveChanges();
+                //ViewBag.mat = db.Matieres.Where(c => c.Assignation != "Assigned").Distinct().ToList();
 
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            ViewBag.mat = db.Matieres.Where(c=>c.Assignation != "Assigned").Distinct().ToList();
+            return View(enseignant);
         }
-
+        public ActionResult IndexEnseignant()
+        {
+            return View(db.Enseignants);
+        }
         // GET: Directeur/Edit/5
         public ActionResult Edit(int id)
         {
@@ -65,28 +75,35 @@ namespace GestionScolarite.Controllers
                 return RedirectToAction("Index");
             }
             return View(etudiant);
-        }        
-
-        // GET: Directeur/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
         }
 
-        // POST: Directeur/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        // GET: Directeur/Delete/5
+        // GET: Administratif/Delete/5
+        public ActionResult Delete(int? id)
         {
-            try
+            if (id == null)
             {
-                // TODO: Add delete logic here
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Account account = db.Accounts.Find(id);
+            if (account == null)
+            {
+                return HttpNotFound();
+            }
+            return View(account);
+        }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+        // POST: Administratif/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Account account = db.Accounts.Find(id);
+            db.Accounts.Remove(account);
+            Etudiant e = db.Etudiants.FirstOrDefault(c => c.Account == account.Id);
+            db.Etudiants.Remove(e);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

@@ -46,7 +46,7 @@
             @Html.DropDownListFor(model => model.Status, new SelectList(new List<SelectListItem>
             {
              new SelectListItem { Value = "Non Valide", Text = "Non Valide" },
-             new SelectListItem { Value = "Valide", Text = "Valide" },}, "Value", "Text"), "Select an option", new { @class = "form-control" })
+             new SelectListItem { Value = "Valide", Text = "Valide" }}, "Value", "Text"), "Select an option", new { @class = "form-control" })
 
             @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
         </div>

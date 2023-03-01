@@ -84,18 +84,20 @@ namespace GestionScolarite.Controllers
         [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,UserName,Password,Role")] Account account)
+        public ActionResult Create(Account account)
         {
             if (ModelState.IsValid)
-            {
-                db.Accounts.Add(account);
+            { 
+                db.Accounts.Add(account); 
+                db.SaveChanges();            
                 if (account.Role == "Etudiant")
                 {
-                    Etudiant e = new Etudiant (account.Id,account.UserName);
+                    Etudiant e = new Etudiant(account.Id,account.UserName);
                     db.Etudiants.Add(e);
                 }
 
                 db.SaveChanges();
+
                 return RedirectToAction("Index", "Home");
             }
 

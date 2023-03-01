@@ -96,3 +96,7 @@ C:\Users\dell\Desktop\S8\Asp.Net\GestionScolarite\GestionScolarite\GestionScolar
 C:\Users\dell\Desktop\S8\Asp.Net\GestionScolarite\GestionScolarite\GestionScolarite\obj\Debug\GestionScolarite.Migrations.InitialCreate4.resources
 C:\Users\dell\Desktop\S8\Asp.Net\GestionScolarite\GestionScolarite\GestionScolarite\obj\Debug\GestionScolarite.Migrations.InitialCreate5.resources
 C:\Users\dell\Desktop\S8\Asp.Net\GestionScolarite\GestionScolarite\GestionScolarite\obj\Debug\GestionScolarite.Migrations.InitialCreate6.resources
+C:\Users\dell\Desktop\S8\Asp.Net\GestionScolarite\GestionScolarite\GestionScolarite\obj\Debug\GestionScolarite.Migrations.InitialCreate7.resources
+C:\Users\dell\Desktop\S8\Asp.Net\GestionScolarite\GestionScolarite\GestionScolarite\obj\Debug\GestionScolarite.Migrations.InitialCreate8.resources
+C:\Users\dell\Desktop\S8\Asp.Net\GestionScolarite\GestionScolarite\GestionScolarite\obj\Debug\GestionScolarite.Migrations.InitialCreate9.resources
+C:\Users\dell\Desktop\S8\Asp.Net\GestionScolarite\GestionScolarite\GestionScolarite\obj\Debug\GestionScolarite.Migrations.InitialCreate10.resources
