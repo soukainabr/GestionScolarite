@@ -28,7 +28,7 @@ namespace GestionScolarite.Controllers
          // GET: Directeur/Create Enseignant
         public ActionResult CreateEnseignant()
         {
-            ViewBag.mat = db.Matieres.Where(c => c.Assignation != "Assigned").Distinct().ToList();
+            //ViewBag.mat = db.Matieres.Where(c => c.Assignation != "Assigned").Distinct().ToList();
              return View();
         }
 
@@ -41,20 +41,20 @@ namespace GestionScolarite.Controllers
             {
                 db.Enseignants.Add(enseignant);
                 db.SaveChanges();
-                Matiere m = db.Matieres.Find(enseignant.matid);
-                m.Assignation = "Assigned";
-                db.Entry(m).State = EntityState.Modified;
-                db.SaveChanges();
+              //  Matiere m = db.Matieres.Find(enseignant.matid);
+                //m.Assignation = "Assigned";
+                //db.Entry(m).State = EntityState.Modified;
+                //db.SaveChanges();
                 //ViewBag.mat = db.Matieres.Where(c => c.Assignation != "Assigned").Distinct().ToList();
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("IndexEnseignant","Directeur",null);
             }
-            ViewBag.mat = db.Matieres.Where(c=>c.Assignation != "Assigned").Distinct().ToList();
+          //  ViewBag.mat = db.Matieres.Where(c=>c.Assignation != "Assigned").Distinct().ToList();
             return View(enseignant);
         }
         public ActionResult IndexEnseignant()
         {
-            return View(db.Enseignants);
+            return View(db.Enseignants.Include(m => m.Matieres).ToList());
         }
         // GET: Directeur/Edit/5
         public ActionResult Edit(int id)
@@ -105,5 +105,30 @@ namespace GestionScolarite.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult DeleteEnseignant(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Enseignant enseignant = db.Enseignants.Find(id);
+            if (enseignant == null)
+            {
+                return HttpNotFound();
+            }
+            return View(enseignant);
+        }
+
+        // POST: Directeur/DeleteEnseignant/5
+        [HttpPost, ActionName("DeleteEnseignant")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteEnseignant(int id)
+        {
+            Enseignant enseignant = db.Enseignants.Find(id);
+            db.Enseignants.Remove(enseignant);
+            db.SaveChanges();
+            return RedirectToAction("IndexEnseignant");
+        }
+
     }
 }

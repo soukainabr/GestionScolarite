@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CheckBoxList.Mvc, Version=1.0.0.0, Culture=En, processorArchitecture=MSIL">
+      <HintPath>..\packages\CheckBoxList.Mvc.1.0.1\lib\net40\CheckBoxList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -129,6 +132,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\AdministratifController.cs" />
+    <Compile Include="Controllers\AffectationsController.cs" />
     <Compile Include="Controllers\DirecteurController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MatieresController.cs" />
@@ -180,9 +184,54 @@
     <Compile Include="Migrations\202303011848163_InitialCreate10.designer.cs">
       <DependentUpon>202303011848163_InitialCreate10.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303012008352_mat.cs" />
+    <Compile Include="Migrations\202303012008352_mat.designer.cs">
+      <DependentUpon>202303012008352_mat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303012033511_mat1.cs" />
+    <Compile Include="Migrations\202303012033511_mat1.designer.cs">
+      <DependentUpon>202303012033511_mat1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303012053064_mat2.cs" />
+    <Compile Include="Migrations\202303012053064_mat2.designer.cs">
+      <DependentUpon>202303012053064_mat2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303012131111_mat3.cs" />
+    <Compile Include="Migrations\202303012131111_mat3.designer.cs">
+      <DependentUpon>202303012131111_mat3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303012229455_mat4.cs" />
+    <Compile Include="Migrations\202303012229455_mat4.designer.cs">
+      <DependentUpon>202303012229455_mat4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303012350043_mat5.cs" />
+    <Compile Include="Migrations\202303012350043_mat5.designer.cs">
+      <DependentUpon>202303012350043_mat5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303030913449_v1.cs" />
+    <Compile Include="Migrations\202303030913449_v1.designer.cs">
+      <DependentUpon>202303030913449_v1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303072311375_v11.cs" />
+    <Compile Include="Migrations\202303072311375_v11.designer.cs">
+      <DependentUpon>202303072311375_v11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303250230541_InitialCreate11.cs" />
+    <Compile Include="Migrations\202303250230541_InitialCreate11.designer.cs">
+      <DependentUpon>202303250230541_InitialCreate11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303250310406_InitialCreate12.cs" />
+    <Compile Include="Migrations\202303250310406_InitialCreate12.designer.cs">
+      <DependentUpon>202303250310406_InitialCreate12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304110033428_A1.cs" />
+    <Compile Include="Migrations\202304110033428_A1.designer.cs">
+      <DependentUpon>202304110033428_A1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Administratif.cs" />
+    <Compile Include="Models\Affectation.cs" />
     <Compile Include="Models\Directeur.cs" />
     <Compile Include="Models\Enseignant.cs" />
     <Compile Include="Models\Etudiant.cs" />
@@ -2064,6 +2113,15 @@
     <Content Include="Views\Matieres\Index.cshtml" />
     <Content Include="Views\Directeur\CreateEnseignant.cshtml" />
     <Content Include="Views\Directeur\IndexEnseignant.cshtml" />
+    <Content Include="Views\Affectations\Create.cshtml" />
+    <Content Include="Views\Affectations\Delete.cshtml" />
+    <Content Include="Views\Affectations\Details.cshtml" />
+    <Content Include="Views\Affectations\Edit.cshtml" />
+    <Content Include="Views\Affectations\Index.cshtml" />
+    <Content Include="Views\Affectations\AjouterMatiere.cshtml" />
+    <Content Include="Views\Affectations\AddMatiereToEnseignant.cshtml" />
+    <Content Include="Views\Affectations\DeleteSubjects.cshtml" />
+    <Content Include="Views\Directeur\DeleteEnseignant.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2111,6 +2169,39 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303011848163_InitialCreate10.resx">
       <DependentUpon>202303011848163_InitialCreate10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303012008352_mat.resx">
+      <DependentUpon>202303012008352_mat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303012033511_mat1.resx">
+      <DependentUpon>202303012033511_mat1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303012053064_mat2.resx">
+      <DependentUpon>202303012053064_mat2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303012131111_mat3.resx">
+      <DependentUpon>202303012131111_mat3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303012229455_mat4.resx">
+      <DependentUpon>202303012229455_mat4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303012350043_mat5.resx">
+      <DependentUpon>202303012350043_mat5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303030913449_v1.resx">
+      <DependentUpon>202303030913449_v1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303072311375_v11.resx">
+      <DependentUpon>202303072311375_v11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303250230541_InitialCreate11.resx">
+      <DependentUpon>202303250230541_InitialCreate11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303250310406_InitialCreate12.resx">
+      <DependentUpon>202303250310406_InitialCreate12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304110033428_A1.resx">
+      <DependentUpon>202304110033428_A1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

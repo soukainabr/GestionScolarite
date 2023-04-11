@@ -1,0 +1,28 @@
+﻿@model GestionScolarite.Models.Enseignant
+
+@{
+    ViewBag.Title = "DeleteSubjects";
+}
+
+<h2>DeleteSubjects</h2>
+
+
+<div>
+    <table>
+
+        @foreach (var item in Model.Matieres)
+        {
+            <tr>
+                <td>
+                    @Html.HiddenFor(item => item.Matieres.MatiereId) // cache l'ID de la matière pour l'envoyer au serveur
+                    @Html.CheckBoxFor(item => item.IsSelected) // ajoute la case à cocher pour sélectionner la matière
+
+                </td>
+                <td>
+                    @Html.DisplayFor(item => item.Name)
+                </td>
+            </tr>
+        }
+    </table>
+    <input type="submit" value="Supprimer" />
+</div>

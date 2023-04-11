@@ -9,6 +9,6 @@ namespace GestionScolarite.Models
     {
         public int EnseignantId { get; set; }
         public string Name { get; set; }
-        public int matid { get; set; }
+        public List<Matiere> Matieres { get; set; }
     }
 }

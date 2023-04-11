@@ -18,7 +18,7 @@ namespace GestionScolarite.Controllers
         // GET: Matieres
         public ActionResult Index()
         {
-            return View(db.Matieres.ToList());
+            return View(db.Matieres.Include(e=>e.Enseignants).ToList());
         }
 
         // GET: Matieres/Details/5
@@ -114,6 +114,22 @@ namespace GestionScolarite.Controllers
             db.Matieres.Remove(matiere);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult AffectationEnseignants(Matiere matiere,Enseignant enseignant)
+        {
+        
+            if (ModelState.IsValid)
+            {
+                matiere.Enseignants.Add(enseignant);
+                enseignant.Matieres.Add(matiere);
+                db.Entry(matiere).State = EntityState.Modified;
+                db.SaveChanges();
+                db.Entry(enseignant).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
         }
 
         protected override void Dispose(bool disposing)

@@ -18,6 +18,20 @@ namespace GestionScolarite
 
         public DbSet<Matiere> Matieres { get; set; }
         public DbSet<Enseignant> Enseignants { get; set; }
+        public DbSet<Affectation> Affectations { get; set; }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Enseignant>()
+                .HasMany(e => e.Matieres)
+                .WithMany(m => m.Enseignants)
+                .Map(em =>
+                {
+                    em.MapLeftKey("EnseignantId");
+                    em.MapRightKey("MatiereId");
+                    em.ToTable("EnseignantMatiere");
+                });
+        }
     }
+   
 }

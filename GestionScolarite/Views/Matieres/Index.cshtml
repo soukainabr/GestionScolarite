@@ -7,9 +7,10 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create", null,new { @class = "btn btn-primary" })
+    @Html.ActionLink("Create New", "Create", null,new { @class = "text-dark" })
 </p>
 <table class="table">
+
     <thead class="bg-primary text-white">
         <tr>
             <th>
@@ -18,43 +19,44 @@
             <th>
                 @Html.DisplayNameFor(model => model.coeff)
             </th>
+            
             <th>
-                @Html.DisplayNameFor(model => model.Assignation)
+                @Html.DisplayNameFor(model => model.Enseignants)
             </th>
             <th></th>
         </tr>
-    </thead>
-    <tbody>
-
+     </thead>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.coeff)
-            </td>
-            @if (item.Assignation == "Assigned")
-            {
-                <td class="bg-success text-white">
-                    @Html.DisplayFor(modelItem => item.Assignation)
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
                 </td>
-            }
-            else
-            {
-                <td class="bg-danger text-white">
-                    @Html.DisplayFor(modelItem => item.Assignation)
+                <td>
+                    @Html.DisplayFor(modelItem => item.coeff)
                 </td>
-            }
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.MatiereId }, new { @class = "text-dark" })  |
-                @Html.ActionLink("Details", "Details", new { id = item.MatiereId }, new { @class = "text-dark" })  |
-                @Html.ActionLink("Delete", "Delete", new { id = item.MatiereId }, new { @class = "text-dark" })
-            </td>
-        </tr>
+            
+                <td>
+                    <ul>
+                        @if (item.Enseignants == null)
+                        {
+                            <li>Not Assigned Yet</li>
+                        }
+                        else
+                        {
+                            foreach (var enseignant in item.Enseignants)
+                            {
+                                <li>@enseignant.Name</li>
+                            }
+                        }
+                    </ul>
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MatiereId }, new { @class = "text-dark" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.MatiereId }, new { @class = "text-dark" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MatiereId }, new { @class = "text-dark" })
+                </td>
+            </tr>
         }
-    </tbody>
-
 
 </table>

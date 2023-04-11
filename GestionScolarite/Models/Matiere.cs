@@ -11,5 +11,6 @@ namespace GestionScolarite.Models
         public string Name { get; set; }
         public string coeff { get; set; }
         public string Assignation { get; set; } = "Not Assigned";
+        public List<Enseignant> Enseignants { get; set; }
     }
 }

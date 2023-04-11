@@ -10,30 +10,53 @@
     @Html.ActionLink("Create New", "CreateEnseignant")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.matid)
-        </th>
-        <th></th>
-    </tr>
+    <thead class="bg-primary text-white">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Matieres)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.matid)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EnseignantId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EnseignantId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EnseignantId })
-        </td>
-    </tr>
-}
+            <tr>
+                @if (item.Matieres.Any())
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <ul>
+                            @foreach (var matiere in item.Matieres)
+                            {
+                                <li>@matiere.Name</li>
+                            }
+                        </ul>
+                    </td>
+
+                }
+                else
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        Pas de Matieres
+                    </td>
+                }
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.EnseignantId }, new { @class = "text-dark" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.EnseignantId }, new { @class = "text-dark" }) |
+                    @Html.ActionLink("Delete", "DeleteEnseignant", new { id = item.EnseignantId }, new { @class = "text-dark" })
+                </td>
+            </tr>
+
+        }
+
 
 </table>
